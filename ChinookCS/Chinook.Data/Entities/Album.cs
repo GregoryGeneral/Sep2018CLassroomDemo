@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Chinook.Data.Entities
 {
+    [Table("Albums")]
     public class Album
     {
-        [Table("Albums"]
+        
         [Key] public int AlbumID { get; set; }
         [Required(ErrorMessage = "Title is required")]
         [StringLength(160, ErrorMessage = "Title is limited to 120 char")]
@@ -19,6 +20,11 @@ namespace Chinook.Data.Entities
         public int ReleaseYear { get; set; }
         [StringLength(50, ErrorMessage = "Release Label is limited to 50 char")]
         public string ReleaseLabel { get; set; }
+
+
+        //navigational properties
+        public virtual Artist Artist { get; set; }
+        //public virtual ICollection<Track> Tracks { get; set; }
 
     }
 }

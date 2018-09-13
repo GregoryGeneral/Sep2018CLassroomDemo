@@ -22,5 +22,10 @@ namespace Chinook.Data.Entities
 
         public string Album { get; set; }
         
+
+        //navigation properties
+        public virtual ICollection<Album> Albums { get; set; }
+
+        
     }
 }

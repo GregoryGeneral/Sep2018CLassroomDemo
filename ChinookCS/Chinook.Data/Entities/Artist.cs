@@ -20,7 +20,7 @@ namespace Chinook.Data.Entities
         [StringLength(120,ErrorMessage = "Name is limited to 120 char")]
         public string Name { get; set; }
 
-        public string Album { get; set; }
+       
         
 
         //navigation properties

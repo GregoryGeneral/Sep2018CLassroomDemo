@@ -90,5 +90,9 @@
     </asp:ListView>
 
     <asp:ObjectDataSource ID="ArtistListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Artist_List" TypeName="ChinookSystem.BLL.ArtistController"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="AlbumListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Album_GetByArtistId" TypeName="ChinookSystem.BLL.AlbumController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="AlbumListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Album_GetByArtistId" TypeName="ChinookSystem.BLL.AlbumController">
+                <SelectParameters>
+            <asp:ControlParameter ControlID="ArtistList" PropertyName="SelectedValue" DefaultValue="0" Name="artistid" Type="Int32"></asp:ControlParameter>
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>

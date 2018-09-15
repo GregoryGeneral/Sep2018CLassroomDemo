@@ -26,7 +26,7 @@ namespace ChinookSystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public Artist Artis_Find(int artistid)
+        public Artist Artist_Find(int artistid)
         {
             using (var context = new ChinookContext())
             {

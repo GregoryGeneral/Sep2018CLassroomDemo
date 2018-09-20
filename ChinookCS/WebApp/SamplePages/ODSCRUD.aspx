@@ -1,4 +1,8 @@
-﻿<%@ Page Title="ODS CRUD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ODSCRUD.aspx.cs" Inherits="WebApp.SamplePages.ODSCRUD" %>
+﻿<%@ Page Title="ODS CRUD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
+    CodeBehind="ODSCRUD.aspx.cs" Inherits="WebApp.SamplePages.ODSCRUD" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1>ODS CRUD</h1>
@@ -6,6 +10,9 @@
         <br />
         For a ODS Delete to be successful you <strong><u>MUST</u></strong> include on the Listview set of attribute the DataKeyNames. This is set to the primary key attribute of the entity.
     </blockquote>
+
+    <uc1:MessageUserControl runat="server" id="MessageUserControl" />
+
     <asp:ListView ID="AlbumList" runat="server" DataSourceID="AlbumListODS" InsertItemPosition="LastItem" DataKeyNames="AlbumId">
 
         <AlternatingItemTemplate>
@@ -22,7 +29,8 @@
                 <td>
                     <asp:DropDownList ID="ArtistList" runat="server" DataSourceID="ArtistListODS" DataTextField="Name" DataValueField="ArtistId" selectedvalue='<%# Eval("ArtistID") %>'
                         width="200px">
-                    </asp:DropDownList></td>
+                    </asp:DropDownList>
+                </td>
                 <td>
                     <asp:Label Text='<%# Eval("ReleaseYear") %>' runat="server" ID="ReleaseYearLabel"  Width="75px"/></td>
                 <td>
@@ -154,7 +162,8 @@
         runat="server" 
         OldValuesParameterFormatString="original_{0}"
         SelectMethod="Artist_List" 
-        TypeName="ChinookSystem.BLL.ArtistController">
+        TypeName="ChinookSystem.BLL.ArtistController"
+        OnSelected="CheckForException">
     </asp:ObjectDataSource>
 
     <asp:ObjectDataSource ID="AlbumListODS" 
@@ -165,7 +174,10 @@
         OldValuesParameterFormatString="original_{0}" 
         SelectMethod="Album_List" 
         TypeName="ChinookSystem.BLL.AlbumController" 
-        UpdateMethod="Album_Update">
+        UpdateMethod="Album_Update" OnDeleted="CheckForException"
+        OnInserted="CheckForException"
+        OnSelected="CheckForException"
+        OnUpdated="CheckForException">
     </asp:ObjectDataSource>
 </asp:Content>
 

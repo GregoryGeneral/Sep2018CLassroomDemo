@@ -31,3 +31,33 @@ public class PlaylistSummarry
 	public double? storage{get;set;}
 	
 }
+
+
+//Create a list of albums showing its title and artist.
+//Show albums with 15 or more tracks only.
+//For each album shpw the songs on the album and their length
+
+void Main()
+{
+	var results = from x in Albums
+	where x.Tracks.Count > 24
+	select new
+	{
+		artist = x.Artist.Name,
+		title = x.Title,
+		songs = from y in x.Tracks
+		select new
+		{
+			songname = y.Name,
+			length = y.Milliseconds/60000 + ";" +
+			(y.Milliseconds%60000)/1000
+		}
+	};
+results.Dump();
+}
+public class Song
+{
+public string songname{get;set;}
+public double length{get;set;}
+
+}

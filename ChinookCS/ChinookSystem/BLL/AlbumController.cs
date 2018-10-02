@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 #region additional namespaces
 using Chinook.Data.Entities;
 using ChinookSystem.DAL;
-
+using System.ComponentModel;
 #endregion
 
 
